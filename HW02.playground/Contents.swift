@@ -27,22 +27,39 @@ do {
         print("someNumbers", "divisible", "7")
     };
 }
-
-switch (Int(someNumbers)) {
-case ((Int(someNumbers)! / 3)):
-    print("someNumbers", "divisible", "3")
-case ((Int(someNumbers)! / 4)):
-    print("someNumbers", "divisible", "4")
-case ((Int(someNumbers)! / 5)):
-    print("someNumbers", "divisible", "5")
-case ((Int(someNumbers)! / 6)):
-    print("someNumbers", "divisible", "6")
-case ((Int(someNumbers)! / 7)):
-    print("someNumbers", "divisible", "7")
-
-default:
-    ""
+enum Divided {
+    case three
+    case four
+    case five
+    case six
+    case seven
 }
+
+func performDivision(divided: Divided, someNumbers: String) -> Int? {
+    guard let unwrappedNumber = Int(someNumbers) else {
+        return nil
+    }
+
+    switch divided {
+    case .three:
+        return unwrappedNumber / 3
+    case .four:
+        return unwrappedNumber / 4
+    case .five:
+        return unwrappedNumber / 5
+    case .six:
+        return unwrappedNumber / 6
+    case .seven:
+        return unwrappedNumber / 7
+    }
+}
+print("\(String(describing: performDivision(divided: .three, someNumbers: someNumbers))))")
+print("\(String(describing: performDivision(divided: .four, someNumbers: someNumbers))))")
+print("\(String(describing: performDivision(divided: .five, someNumbers: someNumbers))))")
+print("\(String(describing: performDivision(divided: .six, someNumbers: someNumbers))))")
+print("\(String(describing: performDivision(divided: .seven, someNumbers: someNumbers))))")
+
+
 
 
 for divider in 3 ... 7 {
